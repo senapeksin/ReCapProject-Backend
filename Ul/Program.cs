@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
+using System;
 
 namespace Ul
 {
@@ -6,7 +9,16 @@ namespace Ul
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CarManager carManager = new CarManager(new EfCarDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            //8.
+            //  Car car = new Car {Id=1, BrandId = 1, ColorId = 1, DailyPrice = 100, ModelYear = 2018, Description="2018 Model Araba"};
+            //  carManager.Add(car);
+            //foreach (var car in carManager.GetAll())
+            //{
+            //    Console.WriteLine(car.Description);
+            //}
         }
     }
 }
