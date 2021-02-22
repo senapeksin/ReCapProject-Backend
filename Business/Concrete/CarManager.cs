@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,16 +19,16 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            //if (car.DailyPrice > 0)//&& car.Description.Length > 2
-            //{
-            //    _carDal.Add(car);
-            //}
-            //else if (car.DailyPrice <= 0)
-            //{
-            //    Console.WriteLine("Günlük fiyat 0'dan büyük olmalıdır");
-            //}
-            _carDal.Add(car);
-            Console.WriteLine("eklendi");
+            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+                Console.WriteLine("Veritabanına eklendi.");
+            }
+            else
+            {
+                Console.WriteLine("Veritabanına eklenemedi.");
+            }
+
         }
 
         public void Delete(Car car)
@@ -40,15 +41,20 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetCarsByBrandId(int id)
+        public List<CarDetailDto> GetCarDetails()
         {
-           
-            return _carDal.GetAll(p => p.BrandId == id);
+            return _carDal.GetCarDetails();
         }
 
-        public List<Car> GetCarsByColorId(int id)
+        public List<Car> GetCarsByBrandId(int BrandId)
         {
-            return _carDal.GetAll(p=>p.ColorId==id);
+            return _carDal.GetAll(c => c.BrandId == BrandId);
+            //return _carDal.GetAll(p => p.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int ColorId)
+        {
+            return _carDal.GetAll(c => c.ColorId == ColorId);
         }
 
         public void Update(Car car)
