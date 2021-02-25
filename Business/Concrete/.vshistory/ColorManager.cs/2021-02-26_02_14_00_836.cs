@@ -34,12 +34,12 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.ColorsListed);
         }
-        
+        /*
         public IDataResult<Color> GetById(int ColorId)
         {
-            return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == ColorId));
+            return new SuccessDataResult<List<Color>>(_colorDal.Get(c => c.ColorId == ColorId));
         }
-        
+        */
         public IResult Update(Color color)
         {
             _colorDal.Update(color);

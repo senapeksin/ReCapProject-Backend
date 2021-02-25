@@ -35,38 +35,34 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccessResult();
+            return new Result();
         }
         public IResult Update(Car car)
         {
             //?
             _carDal.Update(car);
-            return new SuccessResult();
+            return new Result();
         }
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour==22)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
-            }
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
+            return new DataResult(_carDal.GetAll());
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),Messages.CarsDetailListed);
+            return new DataResult(_carDal.GetCarDetails());
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int BrandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == BrandId));
-           
+            return new DataResult(_carDal.GetAll(c => c.BrandId == BrandId));
+            //return _carDal.GetAll(p => p.BrandId == id);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int ColorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == ColorId));
+            return new DataResult(_carDal.GetAll(c => c.ColorId == ColorId));
         }
 
        

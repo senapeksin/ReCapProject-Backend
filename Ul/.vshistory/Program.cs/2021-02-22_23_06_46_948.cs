@@ -19,7 +19,7 @@ namespace Ul
             ColorManager colorManager = new ColorManager(new EfColorDal());
           //  colorManager.Add(new Color { ColorId=3, ColorName = "Kırmızı" });
           //   colorManager.Delete(new Color { ColorId = 3, ColorName = "Kırmızı" });
-            foreach (var color in colorManager.GetAll().Data)
+            foreach (var color in colorManager.GetAll())
             {
                 Console.WriteLine(color.ColorId + " " + color.ColorName);
             }
@@ -31,7 +31,7 @@ namespace Ul
            //  brandManager.Delete(new Brand { BrandId = 2, BrandName = "Mercedes" });
            // brandManager.Add(new Brand { BrandName = "BMW" });
 
-            foreach (var brand in brandManager.GetAll().Data)
+            foreach (var brand in brandManager.GetAll())
             {
                 Console.WriteLine(brand.BrandName);
             }
@@ -41,7 +41,7 @@ namespace Ul
         {
             CarManager carManager = new CarManager(new EfCarDal());
             //carManager.Add(new Car { BrandId=2, ColorId=2, DailyPrice=150,Description="İkinci araba mercedes",ModelYear=2020});
-            foreach (var car in carManager.GetCarDetails().Data)
+            foreach (var car in carManager.GetCarDetails())
             {
                 Console.WriteLine(car.Id + " - " + car.BrandName + " - "
                     + car.ColorName + " - " + car.DailyPrice);

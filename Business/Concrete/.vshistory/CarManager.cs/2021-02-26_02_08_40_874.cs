@@ -35,13 +35,13 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccessResult();
+            return new Result();
         }
         public IResult Update(Car car)
         {
             //?
             _carDal.Update(car);
-            return new SuccessResult();
+            return new Result();
         }
 
         public IDataResult<List<Car>> GetAll()

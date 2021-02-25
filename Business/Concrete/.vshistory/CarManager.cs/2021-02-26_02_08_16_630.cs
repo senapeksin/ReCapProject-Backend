@@ -35,13 +35,13 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccessResult();
+            return new Result();
         }
         public IResult Update(Car car)
         {
             //?
             _carDal.Update(car);
-            return new SuccessResult();
+            return new Result();
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -61,7 +61,7 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetCarsByBrandId(int BrandId)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == BrandId));
-           
+            //return _carDal.GetAll(p => p.BrandId == id);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int ColorId)
