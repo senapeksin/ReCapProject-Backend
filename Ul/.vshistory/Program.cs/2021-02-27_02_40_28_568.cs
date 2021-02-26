@@ -13,7 +13,7 @@ namespace Ul
             // BrandTest();         //sorun yok
             // ColorTest();         //sorun yok
             // UserTest();
-            //CustomerTest();
+            CustomerTest();
             
         }
             private static void CustomerTest()
@@ -22,6 +22,7 @@ namespace Ul
                 customer.Add(new Customer { UserId = 1, CompanyName = "Şirket1" });
                 customer.Add(new Customer { UserId = 3, CompanyName = "Şirket2" });
                 customer.Add(new Customer { UserId = 2, CompanyName = "Şirket3" });
+
             }
 
             private static void UserTest()

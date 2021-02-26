@@ -17,14 +17,5 @@ namespace Business.Constants
         public static string CustomerAdded = "Müşteri Eklendi";
         public static string CustomerDeleted = "Müşteri Silindi";
         public static string CustomerUpdated = "Müşteri Güncellendi";
-
-        public static string UserAdded = "Kullanıcı Eklendi";
-        public static string UserDeleted = "Kullanıcı Silindi";
-        public static string UserUpdated = "Kullanıcı Güncellendi";
-
-        public static string RentalAdded = "Kiralama Eklendi";
-        public static string RentalDeleted = "Kiralama Silindi";
-        public static string RentalUpdated = "Kiralama Güncellendi";
-        public static string RentalFailed = "Kiralama İşlemi başarısız";
     }
 }

@@ -13,15 +13,16 @@ namespace Ul
             // BrandTest();         //sorun yok
             // ColorTest();         //sorun yok
             // UserTest();
-            //CustomerTest();
-            
-        }
+            CustomerTest();
+            Hepsi();
+
             private static void CustomerTest()
             {
                 CustomerManager customer = new CustomerManager(new EfCustomerDal());
                 customer.Add(new Customer { UserId = 1, CompanyName = "Şirket1" });
                 customer.Add(new Customer { UserId = 3, CompanyName = "Şirket2" });
                 customer.Add(new Customer { UserId = 2, CompanyName = "Şirket3" });
+
             }
 
             private static void UserTest()
@@ -68,5 +69,17 @@ namespace Ul
             }
         }
 
-        
+        private static void Hepsi()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetAll().Data)
+            {
+                Console.WriteLine("BrandId : {0}", car.BrandId);
+                Console.WriteLine("ColorId : {0}", car.ColorId);
+                Console.WriteLine("Model Year : {0}", car.ModelYear);
+                Console.WriteLine("Daily Price : {0}", car.DailyPrice);
+                Console.WriteLine("Description : {0}", car.Description);
+                Console.WriteLine(" ");
+            }
+        }
     }
