@@ -1,7 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
-using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -26,9 +25,14 @@ namespace Business.Concrete
         {
             //business code 
             //validation
-           
-            ValidationTool.Validate(new CarValidator(),car);
-
+             var context = new ValidationContext<Car>(car);
+            CarValidator carValidator = new CarValidator();
+            var result = carValidator.Validate(context);
+            if (!result.IsValid)
+            {
+                throw new ValidationException(result.Errors);
+            }
+            ValidationTool
              _carDal.Add(car);
              return new SuccessResult(Messages.CarAdded);
         }
