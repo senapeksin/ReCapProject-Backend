@@ -28,6 +28,8 @@ namespace Business.Concrete
             //business code 
             //validation
            
+            ValidationTool.Validate(new CarValidator(),car);
+
              _carDal.Add(car);
              return new SuccessResult(Messages.CarAdded);
         }
