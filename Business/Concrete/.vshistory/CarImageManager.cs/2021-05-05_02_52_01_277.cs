@@ -23,7 +23,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
-        public IResult Add(IFormFile file, CarImage image)
+        public IResult Add(IFormFile file, CarImages image)
         {
 
 
@@ -48,7 +48,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
-        public IResult Delete(CarImage image)
+        public IResult Delete(CarImages image)
         {
             var result = _iCarImageDal.Get(c => c.ImageId == image.ImageId);
             if (result == null)
@@ -61,29 +61,29 @@ namespace Business.Concrete
             return new SuccessResult("Messages.ImageDeleted");
         }
 
-        public IDataResult<CarImage> GetById(int Id)
+        public IDataResult<CarImages> GetById(int Id)
         {
-            return new SuccessDataResult<CarImage>(_iCarImageDal.Get(p => p.CarId == Id));
+            return new SuccessDataResult<CarImages>(_iCarImageDal.Get(p => p.CarId == Id));
         }
 
-        public IDataResult<List<CarImage>> GetAll()
+        public IDataResult<List<CarImages>> GetAll()
         {
-            return new SuccessDataResult<List<CarImage>>(_iCarImageDal.GetAll(), "Messages.ImagesListed");
+            return new SuccessDataResult<List<CarImages>>(_iCarImageDal.GetAll(), "Messages.ImagesListed");
         }
 
 
 
-        public IDataResult<List<CarImage>> GetImagesByCarId(int carId)
+        public IDataResult<List<CarImages>> GetImagesByCarId(int carId)
         {
             IResult result = BusinessRules.Run(CheckIfCarImageNull(carId));
             if (result == null)
             {
-                return new ErrorDataResult<List<CarImage>>(result.Message);
+                return new ErrorDataResult<List<CarImages>>(result.Message);
             }
-            return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(carId).Data, "Messages.ImagesListed");
+            return new SuccessDataResult<List<CarImages>>(CheckIfCarImageNull(carId).Data, "Messages.ImagesListed");
         }
         // [ValidationAspect(typeof(CarImageValidator))]
-        public IResult Update(IFormFile file, CarImage image)
+        public IResult Update(IFormFile file, CarImages image)
         {
             var isImage = _iCarImageDal.Get(c => c.ImageId == image.ImageId);
             if (isImage == null)
@@ -112,7 +112,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private IDataResult<List<CarImage>> CheckIfCarImageNull(int carId)
+        private IDataResult<List<CarImages>> CheckIfCarImageNull(int carId)
         {
             try
             {
@@ -120,16 +120,16 @@ namespace Business.Concrete
                 var result = _iCarImageDal.GetAll(c => c.CarId == carId).Any();
                 if (!result)
                 {
-                    List<CarImage> image = new List<CarImage>();
-                    image.Add(new CarImage { CarId = carId, ImagePath = path, Date = DateTime.Now });
-                    return new SuccessDataResult<List<CarImage>>(image);
+                    List<CarImages> image = new List<CarImages>();
+                    image.Add(new CarImages { CarId = carId, ImagePath = path, Date = DateTime.Now });
+                    return new SuccessDataResult<List<CarImages>>(image);
                 }
             }
             catch (Exception exception)
             {
-                return new ErrorDataResult<List<CarImage>>(exception.Message);
+                return new ErrorDataResult<List<CarImages>>(exception.Message);
             }
-            return new SuccessDataResult<List<CarImage>>(_iCarImageDal.GetAll(p => p.CarId == carId).ToList());
+            return new SuccessDataResult<List<CarImages>>(_iCarImageDal.GetAll(p => p.CarId == carId).ToList());
         }
 
     }
