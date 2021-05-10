@@ -1,0 +1,13 @@
+﻿using Core.Entities.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Core.Utilities.Security.JWT
+{
+    public interface ITokenHelper  
+       //ITokenHelper:İlgili kullanıcı için kullanıcının claimlerini(yetki) içerecek bir token üretecek
+    {
+        AccessToken CreateToken(User user, List<OperationClaim> operationClaims);
+    }
+}

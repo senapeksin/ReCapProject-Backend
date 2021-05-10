@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -27,9 +28,9 @@ namespace Ul
             private static void UserTest()
             {
                 UserManager userManager = new UserManager(new EfUserDal());
-                userManager.Add(new User { FirstName = "Begüm", LastName = "Muşdal", Email = "begum@hotmail.com", Password = "123456" });
-                userManager.Add(new User { FirstName = "Nisa", LastName = "Has", Email = "nisa@hotmail.com", Password = "222222" });
-                userManager.Add(new User { FirstName = "Gizem", LastName = "Baygın", Email = "gizem@hotmail.com", Password = "333333" });
+                userManager.Add(new User { FirstName = "Begüm", LastName = "Muşdal", Email = "begum@hotmail.com" });
+                userManager.Add(new User { FirstName = "Nisa", LastName = "Has", Email = "nisa@hotmail.com" });
+                userManager.Add(new User { FirstName = "Gizem", LastName = "Baygın", Email = "gizem@hotmail.com" });
             }
 
             private static void ColorTest()
