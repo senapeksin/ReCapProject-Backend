@@ -1,0 +1,17 @@
+{
+  "TokenOptions": 
+    "Audience": "sena@sena.com",  //kitle
+    "Issuer": "sena@sena.com",  //bunu uygulayan
+    "AccessTokenExpiration": 10,  //token'ýn geçerlilik süresi
+    "SecurityKey": "mysupersecretkeymysupersecretkey"  //tokený olustururken asp.net in kullanacaðý key ýn ismi
+  },
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "Information",
+          "Microsoft": "Warning",
+          "Microsoft.Hosting.Lifetime": "Information"
+        }
+      },
+      "AllowedHosts": "*"
+    }
