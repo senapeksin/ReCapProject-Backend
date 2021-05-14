@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Concrete;
-using Core.DependencyResolvers;
-using Core.Extensions;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;

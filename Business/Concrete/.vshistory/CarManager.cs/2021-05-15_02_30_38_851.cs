@@ -65,7 +65,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),Messages.CarsDetailListed);
         }
 
-        [CacheAspect]
         [PerformanceAspect(5)]
         public IDataResult<List<Car>> GetCarsByBrandId(int BrandId)
         {

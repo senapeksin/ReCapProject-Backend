@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Concrete;
-using Core.DependencyResolvers;
-using Core.Extensions;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
@@ -38,7 +36,6 @@ namespace WebAPI
         {
             services.AddControllers();
 
-            
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -56,15 +53,9 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            services.AddDependencyResolvers(new ICoreModule[]{     // AddDependencyResolvers : Birden cok injection(CoreModule gibi) ekleyebilmek için yazdýk. 
+            ServiceTool.Create(services);
 
-                new CoreModule()
-
-                });
-
-
-
-            //kendi dependency mizi yazdýk.
+                //kendi dependency mizi yazdýk.
             //services.AddSingleton<ICarService,CarManager>();
             //services.AddSingleton<ICarDal, EfCarDal>();
             //services.AddSingleton<IBrandService, BrandManager>();
