@@ -11,7 +11,6 @@
 - Autofac
 - FluentValidation
 - MsSql
-- Angular for Frontend
 # Techniques
 - Layered Architecture Design Pattern
 - AOP
